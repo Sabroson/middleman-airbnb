@@ -14,19 +14,17 @@ title: Le Wagon - Middleman
 <div class="container">
   <h2 class="h2-heading" ">Popular destinations</h2>
   <div class="row">
-    <%
-    cities = %w(shanghai berlin london lisbon barcelona amsterdam paris)
-    cities.each do |city|
-    %>
+    <% data.flats.each do |user, flat| %>
     <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/<%= city%>');">
-          <div class="card-category">Popular</div>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/<%= flat.city_slug%>');">
+          <div class="card-category"> <%= flat.city_name %>  </div>
           <div class="card-description">
-            <h2>Le Wagon <%= city.capitalize%></h2>
-            <p>Very cool city, the best</p>
+            <h2><%= flat.name.capitalize%></h2>
+            <p><%= flat.description %></p>
           </div>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <a class="card-link" href="#" ></a>
+          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/<%=user%>">
+          <!-- <a class="card-link" href="#" ></a> -->
+          <%= link_to "", "flats/#{user}.html", class: "card-link" %>
       </div>
     </div>
     <% end %>
